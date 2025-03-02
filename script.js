@@ -1,8 +1,7 @@
 // Constantes
 const INITIAL_SPEED = 1.0;
-const INITIAL_PANEL_SPEED = 5.0;
 const ACCELERATION_EXPONENT = 0.6;
-const PANEL_SPEED_FACTOR = 35.0;
+const PANEL_SPEED_FACTOR = 100.0;
 
 // Variables de jeu
 let speed = INITIAL_SPEED;
@@ -77,9 +76,8 @@ function initPanelPosition() {
 // Met à jour la position du panneau en suivant la pente
 function updatePanelPosition(dt) {
     const {dxFactor, dyFactor} = getSlopeDirectionFactors();
-    const panelSpeed = INITIAL_PANEL_SPEED + speed;
-    const dx = PANEL_SPEED_FACTOR * panelSpeed * dt * dxFactor;
-    const dy = PANEL_SPEED_FACTOR * panelSpeed * dt * dyFactor;
+    const dx = PANEL_SPEED_FACTOR * speed * dt * dxFactor;
+    const dy = PANEL_SPEED_FACTOR * speed * dt * dyFactor;
     panelX += dx;
     panelY += dy;
     foliePanel.style.left = panelX + "px";
