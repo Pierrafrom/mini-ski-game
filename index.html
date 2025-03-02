@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mini-jeu de ski">
+    <meta name="author" content="Pierre Fro">
+    <meta name="keywords" content="ski, jeu, mini-jeu, javascript">
+    <title>Mini-jeu de Ski</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-sky-100 to-blue-200 h-screen relative">
+<div id="gameContainer" class="w-full h-full relative overflow-hidden">
+    <div id="instructions" class="relative m-5 p-3 bg-white bg-opacity-80 rounded shadow text-gray-700 text-sm z-20">
+        <h2 class="font-bold mb-2">Règles du jeu 🚀</h2>
+        <p>
+            Cet étudiant de l'UTC veut se rendre le plus vite possible à la Folie Douce car l'asso SKIUT (aka la
+            meilleure asso de l'UTC) organise un événement là-bas 🍻.<br>
+            Petit problème : notre cher ami s'est mis une giga cuite la veille à la grotte du Yéti et il est encore un
+            peu KO 😵.<br>
+            Il ne doit surtout pas dépasser <strong>100 km/h</strong> sinon c'est adieu le ski et bonjour l'hosto 🚑.<br>
+            Laisse-le foncer le plus vite possible jusqu'à la Folie Douce, mais stoppe-le avant qu'il ne soit trop tard
+            🛑.<br>
+            Ta mission est donc d'arrêter le skieur le plus proche possible de <strong>100 km/h</strong> sans les
+            dépasser !
+        </p>
+    </div>
+    <div id="distanceDisplay" class="relative text-center text-xl font-medium text-gray-800 z-20">
+        Vitesse: 0.0000 km/h
+    </div>
+    <img id="skier" src="skier.png" alt="Skieur"
+         class="w-20 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+    <button id="gameButton"
+            class="absolute bottom-10 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-green-500 text-white rounded shadow hover:bg-green-600 z-20">
+        Start
+    </button>
+    <div id="slope" class="absolute bottom-0 left-0 w-full h-2/3 z-10 overflow-visible">
+        <div id="slope-bg" class="w-full h-full"
+             style="clip-path: polygon(0 40%, 100% 11%, 100% 100%, 0 100%); background-color: #fff;"></div>
+        <img id="folie-douce" src="folie-douce.png" alt="Panneau Folie Douce" class="absolute w-20"
+             style="left: 10%; top: 35%; transform: translate(-50%, -50%) rotate(-10deg);">
+    </div>
+</div>
+<div id="resultPopup" class="fixed inset-0 flex items-center justify-center z-30 hidden">
+    <div id="resultContent" class="p-6 rounded shadow-lg text-white text-center">
+        <p id="resultText" class="mb-4 text-xl font-bold"></p>
+        <button id="resultOk" class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300">OK</button>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
