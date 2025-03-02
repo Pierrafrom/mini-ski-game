@@ -1,7 +1,8 @@
 // Constantes
 const INITIAL_SPEED = 1.0;
+const INITIAL_PANEL_SPEED = 5.0;
 const ACCELERATION_EXPONENT = 0.6;
-const PANEL_SPEED_FACTOR = 30.0;
+const PANEL_SPEED_FACTOR = 35.0;
 
 // Variables de jeu
 let speed = INITIAL_SPEED;
@@ -28,8 +29,8 @@ function updateSpeedDisplay() {
 
 // Affiche le résultat dans le pop-up selon la vitesse finale
 function showResult() {
-    let msg = "";
-    let bgColor = "";
+    let msg;
+    let bgColor;
     if (speed < 70) {
         msg = "Le skieur est trop lent et a loupé l'event 💀";
         bgColor = "#e3342f"; // rouge
@@ -76,8 +77,9 @@ function initPanelPosition() {
 // Met à jour la position du panneau en suivant la pente
 function updatePanelPosition(dt) {
     const {dxFactor, dyFactor} = getSlopeDirectionFactors();
-    const dx = PANEL_SPEED_FACTOR * speed * dt * dxFactor;
-    const dy = PANEL_SPEED_FACTOR * speed * dt * dyFactor;
+    const panelSpeed = INITIAL_PANEL_SPEED + speed;
+    const dx = PANEL_SPEED_FACTOR * panelSpeed * dt * dxFactor;
+    const dy = PANEL_SPEED_FACTOR * panelSpeed * dt * dyFactor;
     panelX += dx;
     panelY += dy;
     foliePanel.style.left = panelX + "px";
